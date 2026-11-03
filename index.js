@@ -34,7 +34,7 @@ app.post('/api/students', (req, res) => {
     });
   }
 
-  if (students.some((student) => student.id === req.body.id)) {
+  if (students.some((student) => String(student.id) === String(req.body.id))) {
     return res.status(409).json({ message: 'A student with this ID already exists' });
   }
 
